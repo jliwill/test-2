@@ -36,6 +36,12 @@ jobs:
       - name: print test-1 abc
         run: |
           git remote add -f sourcerepo https://github.com/jliwill/test-1.git
+          git checkout -b staging-branch sourcerepo/main
+          git subtree split -P src -b src-branch
+          git checkout main
+          git subtree add -P src src-branch
+          git branch -D src staging-branch
+          git remote rm sourcerepo
       
 #       - name: Check out my current repo (test-2)
 #         uses: actions/checkout@v2
