@@ -35,7 +35,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: print test-1 abc
         run: |
-          git remote add -f sourcerepo git@github.com:jliwill/test-1.git
+          git remote add -f sourcerepo https://github.com/jliwill/test-1.git
       
 #       - name: Check out my current repo (test-2)
 #         uses: actions/checkout@v2
