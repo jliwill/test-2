@@ -30,7 +30,7 @@ jobs:
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:
-          REPO: https://github.com/jliwill/test-1.git
+          REPO: github:jliwill/test-1.git 
           BRANCH: abc-temp
           FOLDER: src
   #         SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
