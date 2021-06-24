@@ -34,15 +34,14 @@ jobs:
           BRANCH: abc-temp
           FOLDER: src
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-  #         KNOWN_HOSTS_FILE: resources/known_hosts # Needed if target repo is not on github.com
       
       #  Checkout target repo 
-      - name: Check out the target private repo
-        uses: actions/checkout@master
-        with:
-          fetch-depth: 0
-          repository: jliwill/test-1
-          ref: main
+#       - name: Check out the target private repo
+#         uses: actions/checkout@master
+#         with:
+#           fetch-depth: 0
+#           repository: jliwill/test-1
+#           ref: main
           
       # merge branch with changes and delete remote branch
 #       - name: merge temp branch and delete after
