@@ -32,7 +32,7 @@ jobs:
         env:
           REPO: git@github.com:jliwill/test-1.git
           BRANCH: abc-temp
-          FOLDER: src
+          FOLDER: archives
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
       
       #  Checkout target repo 
