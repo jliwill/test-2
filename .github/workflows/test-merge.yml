@@ -41,7 +41,9 @@ jobs:
         with:
           fetch-depth: 0
           repository: jliwill/test-1
+          token: ${{ secrets.PAT }}
           ref: abc-temp
+      
           
       # modify file path to be same as main branch
       - name: edit path and move files
