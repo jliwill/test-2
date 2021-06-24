@@ -35,19 +35,26 @@ jobs:
           FOLDER: archives
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
       
-      #  Checkout target repo 
-#       - name: Check out the target private repo
-#         uses: actions/checkout@master
-#         with:
-#           fetch-depth: 0
-#           repository: jliwill/test-1
-#           ref: main
+     # Checkout target repo 
+      - name: Check out the target private repo
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+          repository: jliwill/test-1
+          ref: abc-temp
           
-      # merge branch with changes and delete remote branch
-#       - name: merge temp branch and delete after
-#         run: |
-#            git merge -m "changes-from-another-repo" --allow-unrelated-histories -X theirs origin/abc-temp
-#            git push origin --delete abc/temp
+      # modify file path to be same as main branch
+      - name: edit path and move files
+        run: |
+           mkdir -p services/rules/lib/archives
+           mv ./*?_flat.json ./services/rules/lib/archives
+     
+      # modify file path to be same as main branch
+      - name: merge files from branch into dev branch
+        run: |
+          git checkout dev
+          git checkout abc-temp services/rules/lib/archives/*
+          git status
       
       
       
