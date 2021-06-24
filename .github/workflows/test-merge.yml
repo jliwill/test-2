@@ -37,7 +37,7 @@ jobs:
       
      # Checkout target repo 
       - name: Check out the target private repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
           repository: jliwill/test-1
