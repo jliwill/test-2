@@ -45,10 +45,10 @@ jobs:
           ref: main
           
       # merge branch with changes and delete remote branch
-      - name: merge temp branch and delete after
-        run: |
-           git merge -m "changes-from-another-repo" --allow-unrelated-histories -X theirs origin/abc-temp
-           git push origin --delete abc/temp
+#       - name: merge temp branch and delete after
+#         run: |
+#            git merge -m "changes-from-another-repo" --allow-unrelated-histories -X theirs origin/abc-temp
+#            git push origin --delete abc/temp
       
       
       
