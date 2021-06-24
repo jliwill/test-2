@@ -48,6 +48,9 @@ jobs:
         run: |
            mkdir -p services/rules/lib/archives
            mv ./*?_flat.json ./services/rules/lib/archives
+           git add --all
+           git commit -m "creating path and moving flat files"
+           git push origin/abc-temp
      
       # modify file path to be same as main branch
 #       - name: merge files from branch into dev branch
