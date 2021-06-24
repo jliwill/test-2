@@ -50,11 +50,11 @@ jobs:
            mv ./*?_flat.json ./services/rules/lib/archives
      
       # modify file path to be same as main branch
-      - name: merge files from branch into dev branch
-        run: |
-          git checkout dev
-          git checkout abc-temp services/rules/lib/archives/*
-          git status
+#       - name: merge files from branch into dev branch
+#         run: |
+#           git checkout dev
+#           git checkout abc-temp services/rules/lib/archives/*
+#           git status
       
       
       
