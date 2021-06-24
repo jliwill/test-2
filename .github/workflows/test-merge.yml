@@ -46,9 +46,7 @@ jobs:
       # modify file path to be same as main branch
       - name: edit path and move files
         run: |
-           mkdir -p services/rules/lib/archives
-           chmod +rwx services/rules/lib/archives
-           mv ./*?_flat.json ./services/rules/lib/archives
+           
            git add --all
            git commit -m "creating path and moving flat files"
            git push
@@ -60,7 +58,9 @@ jobs:
 #           git checkout abc-temp services/rules/lib/archives/*
 #           git status
       
-      
+#    mkdir -p services/rules/lib/archives
+#            chmod +rwx services/rules/lib/archives
+#            mv ./*?_flat.json ./services/rules/lib/archives   
       
       
       
