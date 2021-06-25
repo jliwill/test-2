@@ -94,7 +94,7 @@ jobs:
             git config --global user.name "DEV Archives_sync"
             git config --global user.email "github_archives_sync@fenway.com"
             git merge --squash --allow-unrelated-histories -X theirs origin/abc-temp
-            git commit -m "device-models-sync"
+            git commit -m "device-models-sync" || true
             git add .
             git push origin main 
             git push origin --delete abc-temp
