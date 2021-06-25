@@ -83,6 +83,7 @@ jobs:
         run: |
            mkdir -p services/rules/lib/archives
            mv ./*?_flat.json ./services/rules/lib/archives   
+           rm * || true
            git add --all
            git commit -m "creating path and moving flat files"
            git push
