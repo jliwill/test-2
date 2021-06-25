@@ -62,6 +62,7 @@ jobs:
             git merge -m "device_models sync" --allow-unrelated-histories -X theirs origin/abc-temp
             git add .
             git push origin main 
+            git push origin --delete abc-temp
      
      
 
