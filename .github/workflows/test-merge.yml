@@ -53,16 +53,24 @@ jobs:
            git add --all
            git commit -m "creating path and moving flat files"
            git push
+
+      - name: merge and delete temporary branch
+        run: |
+            git checkout main
+            git config --global user.name "DEV Archives_sync"
+            git config --global user.email "github_archives_sync@fenway.com"
+            git merge -m "device_models sync" --allow-unrelated-histories -X theirs origin/abc-temp
+            git add .
+            git push origin main 
      
      
-     #chmod +rwx services/rules/lib/archives
+
      
      
      
      
      
-     
-     
+   
       # modify file path to be same as main branch
 #       - name: merge files from branch into dev branch
 #         run: |
@@ -86,14 +94,4 @@ jobs:
           
           
       
-      
-#       - name: Check out my current repo (test-2)
-#         uses: actions/checkout@v2
-#         with:
-#           fetch-depth: 0
-      
-#       - name: print test-2 abc
-#         run: |
-#           cd src
-#           cat abc.md
-          
+    
