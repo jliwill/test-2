@@ -99,6 +99,7 @@ jobs:
            
       - name: edit path and move files
         run: |
+           git checkout device-model-sync-temp
            mkdir -p services/rules/lib/archives
            mv ./archives/*?_flat.json ./services/rules/lib/archives   
            find . -mindepth 1 -not -path '*/\.*' ! -regex '^./services'
