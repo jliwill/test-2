@@ -63,6 +63,7 @@ jobs:
         run: |
           git checkout --orphan device-model-sync-temp
           find . -mindepth 1 ! -regex '^./archives/\(/.*\)?' -delete
+          ls
           
 #     # Deploy to another repo
 #       - name: Deploy
