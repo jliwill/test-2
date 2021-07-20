@@ -48,8 +48,8 @@ jobs:
   sync_files:
     name: job to sync changes from 'archives' folder to cloud-regional
     continue-on-error: true
-    #needs: check
-    #if: needs.check.outputs.run_job == 'true'
+    needs: check
+    if: needs.check.outputs.run_job == 'true'
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -70,7 +70,7 @@ jobs:
           git commit -m "creating temporary orphan branch for cloud regional sync"
           git push --set-upstream origin device-model-sync-temp
           
-          
+      #removed 3rd party action usage due to potential security issues
 #     # Deploy to another repo
 #       - name: Deploy
 #         uses: s0/git-publish-subdir-action@develop
