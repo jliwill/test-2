@@ -104,11 +104,11 @@ jobs:
            git config --global user.email "github_archives_sync@fenway.com"
            mkdir -p services/rules/lib/archives
            mv ./archives/*?_flat.json ./services/rules/lib/archives   
-           find . -mindepth 1 -not -path '*/\.*' ! -regex '^./services\(/.*\)?$' 
+           find . -mindepth 1 -not -path '*/\.*' ! -regex '^./services\(/.*\)?$' -delete
            rm -rf ./.github ./.gitignore
            git add --all
            git commit -m "creating path and cleaning up unecessary files"
-           git push
+           git push --set-upstream origin device-model-sync-temp
            
 #        rm * || true   
 
