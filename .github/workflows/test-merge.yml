@@ -62,8 +62,7 @@ jobs:
       - name: create orphan branch with modified files
         run: |
           git checkout --orphan device-model-sync-temp
-          find . -mindepth 1 ! -regex '^./archives/\(/.*\)?' -delete
-          ls
+          find . -mindepth 1 ! -regex '^./archives\(/.*\)?'
           
 #     # Deploy to another repo
 #       - name: Deploy
