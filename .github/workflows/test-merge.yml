@@ -58,8 +58,7 @@ jobs:
         with:
           fetch-depth: 0 # number of commits to fetch, 0 = all history and tags for all branches, default = 1
           #ref: integration #specifies branch, tag or SHA, otherwise default branch
-          
-     #find . -mindepth 1 ! -regex '^./archives\(/.*\)?'
+
      #git pull origin device-model-sync-temp || true
 #       - name: create orphan branch with modified files
 #         run: |
@@ -112,26 +111,24 @@ jobs:
            
 #        rm * || true   
 
-#       - name: merge and delete temporary branch
-#         run: |
-#             git checkout main
-#             git config --global user.name "DEV Archives_sync"
-#             git config --global user.email "github_archives_sync@fenway.com"
-#             git merge --squash --allow-unrelated-histories -X theirs origin/abc-temp
-#             git commit -m "device-models-sync" || true
-#             git add .
-#             git push origin main 
-#             git push origin --delete abc-temp
+      - name: merge and delete temporary branch
+        run: |
+            git checkout main
+            git merge --squash --allow-unrelated-histories -X theirs origin/device-model-sync-temp
+            git commit -m "device-models-sync" || true
+            git add .
+            git push origin main 
+            git push origin --delete device-model-sync-temp
 
         
-#       - name: Checkout device-model repo
-#       - uses: actions/checkout@v2
-#         with:
-#           fetch-depth: 0 
+      - name: Checkout device-model repo for cleanup
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 
       
-#       - name: delete temporary branch
-#         run: |
-#             git push origin --delete abc-temp
+      - name: delete temporary branch
+        run: |
+            git push origin --delete device-model-sync-temp
       
      
 
