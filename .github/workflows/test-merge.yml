@@ -63,6 +63,7 @@ jobs:
       - name: create orphan branch with modified files
         run: |
           git checkout --orphan device-model-sync-temp
+          git pull
           git config --global user.email "sync@jci.com"
           git config --global user.name "device sync"
           git add --all
