@@ -97,11 +97,13 @@ jobs:
            git fetch https://github.com/jliwill/test-2.git device-model-sync-temp:device-model-sync-temp
            
            
-#       - name: edit path and move files
-#         run: |
-#            mkdir -p services/rules/lib/archives
-#            mv ./*?_flat.json ./services/rules/lib/archives   
-#            rm * || true
+      - name: edit path and move files
+        run: |
+           mkdir -p services/rules/lib/archives
+           mv ./archives/*?_flat.json ./services/rules/lib/archives   
+           find . -mindepth 1 -not -path '*/\.*' ! -regex '^./services'
+           
+#        rm * || true
 #            git add --all
 #            git commit -m "creating path and moving flat files"
 #            git push
