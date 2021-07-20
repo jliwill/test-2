@@ -59,45 +59,50 @@ jobs:
           fetch-depth: 0 # number of commits to fetch, 0 = all history and tags for all branches, default = 1
           #ref: integration #specifies branch, tag or SHA, otherwise default branch
       
-    # Deploy to another repo
-      - name: Deploy
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: git@github.com:jliwill/test-1.git
-          BRANCH: abc-temp
-          FOLDER: archives
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+      - name: create orphan branch with modified files
+        run: |
+          git checkout --orphan device-model-sync-temp
+          find . -mindepth 1 ! -regex '^./archives/\(/.*\)?' -delete
+          
+#     # Deploy to another repo
+#       - name: Deploy
+#         uses: s0/git-publish-subdir-action@develop
+#         env:
+#           REPO: git@github.com:jliwill/test-1.git
+#           BRANCH: abc-temp
+#           FOLDER: archives
+#           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
       
-     # Checkout target repo 
-      - name: Check out the target private repo
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          repository: jliwill/test-1
-          token: ${{ secrets.PAT }}
-          ref: abc-temp
+#      # Checkout target repo 
+#       - name: Check out the target private repo
+#         uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#           repository: jliwill/test-1
+#           token: ${{ secrets.PAT }}
+#           ref: abc-temp
       
           
-      # modify file path to be same as main branch
-      - name: edit path and move files
-        run: |
-           mkdir -p services/rules/lib/archives
-           mv ./*?_flat.json ./services/rules/lib/archives   
-           rm * || true
-           git add --all
-           git commit -m "creating path and moving flat files"
-           git push
+#       # modify file path to be same as main branch
+#       - name: edit path and move files
+#         run: |
+#            mkdir -p services/rules/lib/archives
+#            mv ./*?_flat.json ./services/rules/lib/archives   
+#            rm * || true
+#            git add --all
+#            git commit -m "creating path and moving flat files"
+#            git push
 
-      - name: merge and delete temporary branch
-        run: |
-            git checkout main
-            git config --global user.name "DEV Archives_sync"
-            git config --global user.email "github_archives_sync@fenway.com"
-            git merge --squash --allow-unrelated-histories -X theirs origin/abc-temp
-            git commit -m "device-models-sync" || true
-            git add .
-            git push origin main 
-            git push origin --delete abc-temp
+#       - name: merge and delete temporary branch
+#         run: |
+#             git checkout main
+#             git config --global user.name "DEV Archives_sync"
+#             git config --global user.email "github_archives_sync@fenway.com"
+#             git merge --squash --allow-unrelated-histories -X theirs origin/abc-temp
+#             git commit -m "device-models-sync" || true
+#             git add .
+#             git push origin main 
+#             git push origin --delete abc-temp
      
      
 
