@@ -93,7 +93,7 @@ jobs:
       # modify file path to be same as main branch
       - name: attempt to fetch orphan branch from test-2
         run: |
-           git fetch https://github.com/jliwill/test-2.git device-model-sync:device-model-sync-temp
+           git fetch https://github.com/jliwill/test-2.git device-model-sync-temp:device-model-sync-temp
            
            
 #       - name: edit path and move files
