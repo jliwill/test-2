@@ -58,11 +58,15 @@ jobs:
         with:
           fetch-depth: 0 # number of commits to fetch, 0 = all history and tags for all branches, default = 1
           #ref: integration #specifies branch, tag or SHA, otherwise default branch
-      
+          
+     #find . -mindepth 1 ! -regex '^./archives\(/.*\)?'
       - name: create orphan branch with modified files
         run: |
           git checkout --orphan device-model-sync-temp
-          find . -mindepth 1 ! -regex '^./archives\(/.*\)?'
+          git add --all
+          git commit -m "creating temporary orphan branch for cloud regional sync"
+          git push
+          
           
 #     # Deploy to another repo
 #       - name: Deploy
