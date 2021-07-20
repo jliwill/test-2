@@ -67,7 +67,7 @@ jobs:
           git config --global user.name "device sync"
           git add --all
           git commit -m "creating temporary orphan branch for cloud regional sync"
-         git push --set-upstream origin device-model-sync-temp
+          git push --set-upstream origin device-model-sync-temp
           
           
 #     # Deploy to another repo
