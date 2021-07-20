@@ -60,15 +60,16 @@ jobs:
           #ref: integration #specifies branch, tag or SHA, otherwise default branch
           
      #find . -mindepth 1 ! -regex '^./archives\(/.*\)?'
-      - name: create orphan branch with modified files
-        run: |
-          git checkout --orphan device-model-sync-temp
-          git pull origin device-model-sync-temp || true
-          git config --global user.email "sync@jci.com"
-          git config --global user.name "device sync"
-          git add --all
-          git commit -m "creating temporary orphan branch for cloud regional sync"
-          git push --set-upstream origin device-model-sync-temp
+     #git pull origin device-model-sync-temp || true
+#       - name: create orphan branch with modified files
+#         run: |
+#           git checkout --orphan device-model-sync-temp
+          
+#           git config --global user.email "sync@jci.com"
+#           git config --global user.name "device sync"
+#           git add --all
+#           git commit -m "creating temporary orphan branch for cloud regional sync"
+#           git push --set-upstream origin device-model-sync-temp
           
           
 #     # Deploy to another repo
