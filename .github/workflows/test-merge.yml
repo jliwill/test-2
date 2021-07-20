@@ -65,8 +65,8 @@ jobs:
 #         run: |
 #           git checkout --orphan device-model-sync-temp
           
-#           git config --global user.email "sync@jci.com"
-#           git config --global user.name "device sync"
+#           git config --global user.name "DEV Archives_sync"
+#           git config --global user.email "github_archives_sync@fenway.com"
 #           git add --all
 #           git commit -m "creating temporary orphan branch for cloud regional sync"
 #           git push --set-upstream origin device-model-sync-temp
@@ -104,12 +104,11 @@ jobs:
            mv ./archives/*?_flat.json ./services/rules/lib/archives   
            find . -mindepth 1 -not -path '*/\.*' ! -regex '^./services\(/.*\)?$' 
            rm -rf ./.github ./.gitignore
-
+           git add --all
+           git commit -m "creating path and cleaning up unecessary files"
+           git push
            
-#        rm * || true
-#            git add --all
-#            git commit -m "creating path and moving flat files"
-#            git push
+#        rm * || true   
 
 #       - name: merge and delete temporary branch
 #         run: |
@@ -121,7 +120,17 @@ jobs:
 #             git add .
 #             git push origin main 
 #             git push origin --delete abc-temp
-     
+
+        
+#       - name: Checkout device-model repo
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0 
+      
+#       - name: delete temporary branch
+#         run: |
+#             git push origin --delete abc-temp
+      
      
 
      
@@ -130,22 +139,7 @@ jobs:
      
      
    
-      # modify file path to be same as main branch
-#       - name: merge files from branch into dev branch
-#         run: |
-#           git checkout dev
-#           git checkout abc-temp services/rules/lib/archives/*
-#           git status
-      
-#       - name: print test-1 abc
-#         run: |
-#           git remote add -f sourcerepo https://github.com/jliwill/test-1.git
-#           git checkout -b staging-branch sourcerepo/main
-#           git subtree split -P src -b src-branch
-#           git checkout main
-#           git subtree add -P src src-branch
-#           git branch -D src staging-branch
-#           git remote rm sourcerepo
+ 
           
           
       
