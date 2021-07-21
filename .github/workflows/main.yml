@@ -27,16 +27,9 @@ jobs:
         run: |
           git config --global user.name "PROD Archives_sync"
           git config --global user.email "github_archives_sync@fenway.com"
-          rm -rf *
-          git add *
-          git commit -m "rm all" || true
-          git push origin prod 
-      
-      - name: copying integration content over 
-        run: |
-          git merge origin/integration
-          git add *
-          git commit -m "integration merged"
+          git rm -rf .
+          git merge --squash origin/integration --allow-unrelated-histories
+          git commit -m "sources from integration"
           git push origin prod
           
 
