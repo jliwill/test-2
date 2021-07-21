@@ -30,7 +30,7 @@ jobs:
           git checkout origin/integration
           git merge -s ours prod
           git checkout prod
-          git merge origin/integration
+          git merge -X theirs origin/integration
           git add .
           git push origin prod     
 
