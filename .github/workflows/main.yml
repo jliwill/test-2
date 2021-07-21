@@ -34,8 +34,9 @@ jobs:
       
       - name: copying integration content over 
         run: |
-          git merge -m "int" origin/integration
-          git add .
+          git merge origin/integration
+          git add *
+          git commit -m "integration merged"
           git push origin prod
           
 
