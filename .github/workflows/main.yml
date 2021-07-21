@@ -29,7 +29,7 @@ jobs:
           git config --global user.email "github_archives_sync@fenway.com"
           git checkout origin/integration
           git merge -s ours prod
-          git checkout origin/integration
+          git checkout prod
           git merge origin/integration
           git add .
           git push origin prod     
