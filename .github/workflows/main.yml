@@ -33,7 +33,7 @@ jobs:
           
       - name: merge integration into prod
         run: | 
-          git clone --single-branch --branch integration https://github.com/jliwill/test-2.git     
+          git clone --single-branch --branch integration https://github.com/jliwill/test-2.git integration-repo   
 #       - name: merge integration into prod
 #         run: | 
 #           git merge --allow-unrelated-histories -X theirs origin/integration
