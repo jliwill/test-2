@@ -30,6 +30,7 @@ jobs:
           git rm -rf .
           git commit -m "removed local files"
           git merge --squash origin/integration --allow-unrelated-histories
+          git add --all
           git commit -m "sources from integration"
           git push origin prod
           
