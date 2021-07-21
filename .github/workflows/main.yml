@@ -29,27 +29,9 @@ jobs:
           git config --global user.email "github_archives_sync@fenway.com"
           git rm -rf .
           git commit -m "removed local files"
-          git push origin prod
-  deploy:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: prod
-
-
-      # Runs a set of commands using the runners shell
-      - name: merge integration into prod
-        run: |
-          git config --global user.name "PROD Archives_sync"
-          git config --global user.email "github_archives_sync@fenway.com"
-          git merge --squash origin/integration --allow-unrelated-histories
+          git merge --squash origin/integration --allow-unrelated-histories -X theirs
           git add --all
           git commit -m "sources from integration"
           git push origin prod
-          
+
 
