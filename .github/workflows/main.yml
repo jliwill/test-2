@@ -27,7 +27,8 @@ jobs:
         run: |
           git config --global user.name "PROD Archives_sync"
           git config --global user.email "github_archives_sync@fenway.com"
-          git merge -m "integration" --allow-unrelated-histories -X theirs origin/integration 
+          rm -rf *
+          git pull origin/integration
           git add .
           git push origin prod     
 
