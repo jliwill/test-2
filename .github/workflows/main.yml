@@ -29,6 +29,10 @@ jobs:
           git config --global user.email "github_archives_sync@fenway.com"
           git rm -rf . || true
           git commit -m "removed local files" || true
+          git push origin prod
+          
+      - name: merge integration into prod
+        run: | 
           git merge --squash  --allow-unrelated-histories -s ours origin/integration
           git add --all
           git commit -m "sources from integration"
