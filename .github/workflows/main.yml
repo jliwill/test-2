@@ -34,7 +34,7 @@ jobs:
       
       - name: copying integration content over 
         run: |
-          git merge -m "int" --allow-unrelated-histories -X theirs origin/integration
+          git merge -m "int" origin/integration
           git add .
           git push origin prod
           
