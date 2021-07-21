@@ -27,7 +27,6 @@ jobs:
         run: |
           git config --global user.name "PROD Archives_sync"
           git config --global user.email "github_archives_sync@fenway.com"
-          rm -rf *
           git merge --ff-only origin/integration
           git add .
           git push origin prod     
