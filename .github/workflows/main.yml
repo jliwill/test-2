@@ -30,11 +30,6 @@ jobs:
           git rm -rf .
           git commit -m "removed local files"
           git push origin prod
-          
-          git merge --squash origin/integration --allow-unrelated-histories
-          git add --all
-          git commit -m "sources from integration"
-          git push origin prod
   deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
