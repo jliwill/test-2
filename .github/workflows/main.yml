@@ -35,7 +35,7 @@ jobs:
         run: | 
           git clone --single-branch --branch integration https://github.com/jliwill/test-2.git integration-repo
           git mv integration-repo/* ./ -k
-          git rm -rf integration-repo
+          git rm -rf ./integration-repo || true
           git add * 
           git commit -m "Folders moved out of webapp directory :-)"
           git push origin prod
