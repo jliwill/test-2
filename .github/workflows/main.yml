@@ -33,7 +33,7 @@ jobs:
           
       - name: merge integration into prod
         run: | 
-          git merge --squash  --allow-unrelated-histories -s ours origin/integration
+          git merge --allow-unrelated-histories -s ours origin/integration
           git add --all
           git commit -m "sources from integration"
           git push origin prod
