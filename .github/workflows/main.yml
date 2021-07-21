@@ -38,7 +38,7 @@ jobs:
           rm -rf !$/.git
           cd ..
           git mv integration-repo/* ./ -k
-          git rm -rf ./integration-repo
+          git rm -rf integration-repo || true
           git add * 
           git commit -m "Folders moved out of webapp directory :-)"
           git push origin prod
