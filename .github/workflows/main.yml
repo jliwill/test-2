@@ -28,6 +28,7 @@ jobs:
           git config --global user.name "PROD Archives_sync"
           git config --global user.email "github_archives_sync@fenway.com"
           rm -rf *
-          git add .
+          git add *
+          git commit -m "rm all"
           git push origin prod     
 
