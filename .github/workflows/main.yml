@@ -23,31 +23,32 @@ jobs:
           
     
       # Runs a set of commands using the runners shell
-      - name: merge integration into prod
+      - name: copy integration into prod
         run: |
           git config --global user.name "PROD Archives_sync"
           git config --global user.email "github_archives_sync@fenway.com"
-          git rm -rf . || true
-          git commit -m "removed local files" || true
-          git push origin prod
-          
-      - name: merge integration into prod
-        run: | 
-          git clone --single-branch --branch integration https://github.com/jliwill/test-2.git integration-repo
-          cd integration-repo
-          rm -rf !$/.git
-          cd ..
-          git mv integration-repo/* ./ -k
-          git rm -rf integration-repo || true
-          git add * 
-          git commit -m "Folders moved out of webapp directory :-)"
+          git rm -rf .
+          git checkout integration .
+          git commit -am "copying integration into prod"
           git push origin prod
           
 #       - name: merge integration into prod
 #         run: | 
-#           git merge --allow-unrelated-histories -X theirs origin/integration
-#           git add --all
-#           git commit -m "sources from integration"
+#           git clone --single-branch --branch integration https://github.com/jliwill/test-2.git integration-repo
+#           cd integration-repo
+#           rm -rf !$/.git
+#           cd ..
+#           git mv integration-repo/* ./ -k
+#           git rm -rf integration-repo || true
+#           git add * 
+#           git commit -m "Folders moved out of webapp directory :-)"
 #           git push origin prod
+          
+# #       - name: merge integration into prod
+# #         run: | 
+# #           git merge --allow-unrelated-histories -X theirs origin/integration
+# #           git add --all
+# #           git commit -m "sources from integration"
+# #           git push origin prod
 
 
